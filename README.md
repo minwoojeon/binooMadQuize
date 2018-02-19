@@ -32,4 +32,4 @@ binooMadQuize
 
 > # Developer & Designer
 
-#### botbinoo, Byungjun-Lee, Jeungwon-Seo.
+### botbinoo, Byungjun-Lee, Jeungwon-Seo.
