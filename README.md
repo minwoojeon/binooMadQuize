@@ -2,6 +2,8 @@ binooMadQuize
 =============
 
 
+
+
 > # What's this?
 
 ### We know that young children guess and ask each other and accomplish learning through such a series of processes.
@@ -17,7 +19,6 @@ binooMadQuize
 ##### More features are available when they sign up.
 
 
-***
 
 > # Based
 
@@ -28,7 +29,6 @@ binooMadQuize
 ### Used : MySQL, HTML 5, jQuery
 
 
-***
 
 > # Developer & Designer
 
