@@ -21,7 +21,7 @@ binooMadQuize
 
  OS | Used | Framework
  --- | --- | ---
- Windows and Linux. (And someone mac.) | MySQL, HTML 5, jQuery, cpp, Java, JSP | Spring STS
+ Windows and Linux. (And someone mac.) | MySQL, HTML 5, jQuery, cpp, Java, JSP | Spring
 
 > # Developer & Designer
 
