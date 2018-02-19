@@ -26,7 +26,9 @@ binooMadQuize
 > # Developer & Designer
 
  Director : botbinoo.
+ 
  Core Develop/Design : botbinoo, Byungjun-Lee, Jeungwon-Seo.
+ 
  crypt-developer : hyogod.
  
 #### BinooFactory. [wjsalsdnrk7\@gmail.com](wjsalsdnrk7@gmail.com) or [botbinoo\@naver.com](botbinoo@naver.com)
