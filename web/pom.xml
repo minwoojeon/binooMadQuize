@@ -19,6 +19,7 @@
 	</properties>
 	
 	<repositories>
+	<!-- 전자정부 프레임워크 v3 -->
 		<repository>
 			<id>egovframe</id>
 			<url>http://www.egovframe.go.kr/maven/</url>

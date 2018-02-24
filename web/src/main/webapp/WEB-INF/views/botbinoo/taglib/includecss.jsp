@@ -14,7 +14,7 @@
  --%>
  
  <!-- commons css. botbinoo 2018.02.21. -->
- <<style>
+ <style>
 <!--
 @font-face {
 	font-family: 'FontAwesome';
