@@ -1,7 +1,5 @@
 package co.binoofactory.bmq.commons;
 
-import org.springframework.stereotype.Component;
-
 /**
  * @Class Name : CustomStringUtils
  * @Description : It is custom processing method to string data.

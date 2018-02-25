@@ -1,6 +1,6 @@
 package co.binoofactory.bmq.commons;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Class Name : CommonMapper
@@ -12,12 +12,11 @@ import java.util.ArrayList;
  * Copyright (C) by botbinoo's All right reserved.
  */
 
-public interface CommonMapper {
-	public void insertItem(Object item) throws Exception;
-	public void updateItem(Object item) throws Exception;
-	public void deleteItem(Object item) throws Exception;
-	public Object selectItem(Object item) throws Exception;
-	@SuppressWarnings("rawtypes")
-	public ArrayList selectItemList(Object item) throws Exception;
-	public int selectItemListTotCnt(Object item) throws Exception;
+public interface CommonMapper<VO> {
+	public void insertItem(VO item) throws Exception;
+	public void updateItem(VO item) throws Exception;
+	public void deleteItem(VO item) throws Exception;
+	public VO selectItem(VO item) throws Exception;
+	public List<VO> selectItemList(VO item) throws Exception;
+	public int selectItemListTotCnt(VO item) throws Exception;
 }

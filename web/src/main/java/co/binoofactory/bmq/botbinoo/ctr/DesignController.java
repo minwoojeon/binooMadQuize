@@ -27,7 +27,7 @@ public class DesignController {
 	 * @Description : Html5 Design Guide start line
 	 * @author botbinoo@naver.com
 	 * @since 2018.02.21
-	 * @last 2018.02.21
+	 * @last 2018.02.26
 	 * @param
 	 *  - url path only.
 	 * @return 
