@@ -40,9 +40,10 @@ drop table IF EXISTS TB_QUEST_REPLY;
 -- 임의 데이터
 -- 테스트를 위해 또는 실제 데이터 공유를 위해 몇개씩 적어서 깃에 공유합니다.
 -- 메뉴 테스트 데이터
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x00, '디자인 가이드', '/bmq/design/guide');
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x01, '디자인 메인', '/bmq/design/main');
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x02, '디자인 상세', '/bmq/design/contents');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x00, '메인', '/bmq/');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x01, '디자인 가이드', '/bmq/design/guide');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x02, '디자인 메인', '/bmq/design/main');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x03, '디자인 상세', '/bmq/design/contents');
 
 -- 데이터 확인
 -- 검색문을 작성합니다.
