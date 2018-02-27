@@ -1,51 +1,51 @@
--- since 2018.02.26
+ï»¿-- since 2018.02.26
 -- last 2018.02.26
 
 CREATE DATABASE IF NOT EXISTS web_project;
 USE web_project;
 
--- ¸Ş´º Å×ÀÌºí : botbinoo
--- °¡Àå ¸ÕÀú ¸¸µé¾î¾ß ÇÏ´Â ºÎºĞÀÌÀÚ, ÀÌ ÇüÅÂ¸¦ º¸°í ´Ù¸¥ °³¹ßÀÚ°¡ ÀÚÀ¯·Î¿î Ä¿½ºÅÍ¸¶ÀÌÂ¡ ÇÏ±â¸¦ ¿øÇÕ´Ï´Ù.
+-- ë©”ë‰´ í…Œì´ë¸” : botbinoo
+-- ê°€ì¥ ë¨¼ì € ë§Œë“¤ì–´ì•¼ í•˜ëŠ” ë¶€ë¶„ì´ì, ì´ í˜•íƒœë¥¼ ë³´ê³  ë‹¤ë¥¸ ê°œë°œìê°€ ììœ ë¡œìš´ ì»¤ìŠ¤í„°ë§ˆì´ì§• í•˜ê¸°ë¥¼ ì›í•©ë‹ˆë‹¤.
 -- seq, menuCode, menuTitle, menuURL
 drop table IF EXISTS TB_MENU;
 create table if not exists TB_MENU(
-	seq int(10) auto_increment not null,		-- ¸Ş´º °íÀ¯Å°
-	menuCode int(10) default 0,					-- ¸Ş´º ÄÚµå (±¹¹® 0x0~0x100 / ¿µ¹® 0x101~0x200)
-	menuTitle varchar(50) not null,				-- ¸Ş´º ¸í
-	menuURL varchar(500),						-- ¸Ş´º ¸µÅ©
-	regtime datetime default now(),				-- »ı¼º½Ã°£
-	primary key(seq)
+   seq int(10) auto_increment not null,      -- ë©”ë‰´ ê³ ìœ í‚¤
+   menuCode int(10) default 0,               -- ë©”ë‰´ ì½”ë“œ (êµ­ë¬¸ 0x0~0x100 / ì˜ë¬¸ 0x101~0x200)
+   menuTitle varchar(50) not null,            -- ë©”ë‰´ ëª…
+   menuURL varchar(500),                  -- ë©”ë‰´ ë§í¬
+   regtime datetime default now(),            -- ìƒì„±ì‹œê°„
+   primary key(seq)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
--- »ç¿ëÀÚ Å×ÀÌºí : jungwon
--- »ç¿ëÀÚ ·Î±×ÀÎÀ» À§ÇØ °³¹ß.
+-- ì‚¬ìš©ì í…Œì´ë¸” : jungwon
+-- ì‚¬ìš©ì ë¡œê·¸ì¸ì„ ìœ„í•´ ê°œë°œ.
 drop table IF EXISTS TB_USERS;
 
--- »ç¿ëÀÚ Á¢±ÙÁ¤º¸(·Î±×ÀÎ/ºñ·Î±×ÀÎ ¸ğµÎ) Å×ÀÌºí : botbinoo
--- »ç¿ëÀÚ µğºñÁ¢±ÙÁ¤º¸/ÇØÅ·°ø°İ¿¡ ´ëÇÑ ³»¿ªÀ» ³²±â°í, ¾ÏÈ£È­ Å°/½Ã¸®¾ó ³Ñ¹ö¸¦ ÅëÇØ ½Ç½Ã°£ ¾ÏÈ£ ÀçÁ¶ÇÕ(±¸»óÁß)
+-- ì‚¬ìš©ì ì ‘ê·¼ì •ë³´(ë¡œê·¸ì¸/ë¹„ë¡œê·¸ì¸ ëª¨ë‘) í…Œì´ë¸” : botbinoo
+-- ì‚¬ìš©ì ë””ë¹„ì ‘ê·¼ì •ë³´/í•´í‚¹ê³µê²©ì— ëŒ€í•œ ë‚´ì—­ì„ ë‚¨ê¸°ê³ , ì•”í˜¸í™” í‚¤/ì‹œë¦¬ì–¼ ë„˜ë²„ë¥¼ í†µí•´ ì‹¤ì‹œê°„ ì•”í˜¸ ì¬ì¡°í•©(êµ¬ìƒì¤‘)
 drop table IF EXISTS TB_USERS_ACCESS;
 
--- ¹®Á¦ °Ô½ÃÆÇ Å×ÀÌºí : byungjun
--- »ç¿ëÀÚ°¡ ´©±¸³ª ¹®Á¦¸¦ ÃâÁ¦ÇÒ ¼ö ÀÖµµ·Ï ¹®Á¦ Á¦½Ã(ÀÎ¼­Æ®), ÃâÁ¦(°Ë»ö), ¼öÁ¤, »èÁ¦ µîÀ» Á¦°øÇÑ´Ù.
+-- ë¬¸ì œ ê²Œì‹œíŒ í…Œì´ë¸” : byungjun
+-- ì‚¬ìš©ìê°€ ëˆ„êµ¬ë‚˜ ë¬¸ì œë¥¼ ì¶œì œí•  ìˆ˜ ìˆë„ë¡ ë¬¸ì œ ì œì‹œ(ì¸ì„œíŠ¸), ì¶œì œ(ê²€ìƒ‰), ìˆ˜ì •, ì‚­ì œ ë“±ì„ ì œê³µí•œë‹¤.
 drop table IF EXISTS TB_QUEST_BBS;
 
--- ¼ºÀû Å×ÀÌºí : botbinoo
--- °³º° »ç¿ëÀÚÀÇ ½Ã¸®¾ó Å°¿Í Á¢±ÙÁÖ¼Ò³ª ·Î±×ÀÎ Á¤º¸¸¦ ÅëÇØ ÀúÀåµÈ ¹®Á¦ Ç®ÀÌ °á°ú¸¦ ÀúÀåÇÑ´Ù. Áßº¹ÀÌ °¡´ÉÇÏ´Ù.
+-- ì„±ì  í…Œì´ë¸” : botbinoo
+-- ê°œë³„ ì‚¬ìš©ìì˜ ì‹œë¦¬ì–¼ í‚¤ì™€ ì ‘ê·¼ì£¼ì†Œë‚˜ ë¡œê·¸ì¸ ì •ë³´ë¥¼ í†µí•´ ì €ì¥ëœ ë¬¸ì œ í’€ì´ ê²°ê³¼ë¥¼ ì €ì¥í•œë‹¤. ì¤‘ë³µì´ ê°€ëŠ¥í•˜ë‹¤.
 drop table IF EXISTS TB_QUEST_RESULT;
 
--- ¹®Á¦ ´ñ±Û Å×ÀÌºí : byungjun
--- »ı¼ºµÈ ¹®Á¦¿¡ ´ëÇÏ¿© ´©±¸³ª ÀÚÀ¯·Î¿î Æò°¡(´ñ±ÛÀÛ¼º)°¡ ÀÌ·ç¾îÁú ¼ö ÀÖ´Ù. ÀÏ¹İ ´ñ±Û ±â´É¿¡ ´Ü ÇÏ³ª Æò°¡ Ä®·³À» Ãß°¡ÇÑ´Ù.
+-- ë¬¸ì œ ëŒ“ê¸€ í…Œì´ë¸” : byungjun
+-- ìƒì„±ëœ ë¬¸ì œì— ëŒ€í•˜ì—¬ ëˆ„êµ¬ë‚˜ ììœ ë¡œìš´ í‰ê°€(ëŒ“ê¸€ì‘ì„±)ê°€ ì´ë£¨ì–´ì§ˆ ìˆ˜ ìˆë‹¤. ì¼ë°˜ ëŒ“ê¸€ ê¸°ëŠ¥ì— ë‹¨ í•˜ë‚˜ í‰ê°€ ì¹¼ëŸ¼ì„ ì¶”ê°€í•œë‹¤.
 drop table IF EXISTS TB_QUEST_REPLY;
 
--- ÀÓÀÇ µ¥ÀÌÅÍ
--- Å×½ºÆ®¸¦ À§ÇØ ¶Ç´Â ½ÇÁ¦ µ¥ÀÌÅÍ °øÀ¯¸¦ À§ÇØ ¸î°³¾¿ Àû¾î¼­ ±ê¿¡ °øÀ¯ÇÕ´Ï´Ù.
--- ¸Ş´º Å×½ºÆ® µ¥ÀÌÅÍ
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x00, '¸ŞÀÎ', '/bmq/');
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x01, 'µğÀÚÀÎ °¡ÀÌµå', '/bmq/design/guide');
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x02, 'µğÀÚÀÎ ¸ŞÀÎ', '/bmq/design/main');
-insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x03, 'µğÀÚÀÎ »ó¼¼', '/bmq/design/contents');
+-- ì„ì˜ ë°ì´í„°
+-- í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ ë˜ëŠ” ì‹¤ì œ ë°ì´í„° ê³µìœ ë¥¼ ìœ„í•´ ëª‡ê°œì”© ì ì–´ì„œ ê¹ƒì— ê³µìœ í•©ë‹ˆë‹¤.
+-- ë©”ë‰´ í…ŒìŠ¤íŠ¸ ë°ì´í„°
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x00, 'ë©”ì¸', '/bmq/');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x01, 'ë””ìì¸ ê°€ì´ë“œ', '/bmq/design/guide');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x02, 'ë””ìì¸ ë©”ì¸', '/bmq/design/main');
+insert into TB_MENU(menuCode, menuTitle, menuURL) values(0x03, 'ë””ìì¸ ìƒì„¸', '/bmq/design/contents');
 
--- µ¥ÀÌÅÍ È®ÀÎ
--- °Ë»ö¹®À» ÀÛ¼ºÇÕ´Ï´Ù.
+-- ë°ì´í„° í™•ì¸
+-- ê²€ìƒ‰ë¬¸ì„ ì‘ì„±í•©ë‹ˆë‹¤.
 select seq, menuCode, menuTitle, menuURL
 from TB_MENU;

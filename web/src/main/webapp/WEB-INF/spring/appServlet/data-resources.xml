@@ -10,8 +10,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://127.0.0.1:3308/web_project?serverTimezone=UTC" />
-        <property name="username" value="botbinoo"/>
-        <property name="password" value="1234"/>
+        <property name="username" value="root"/>
+        <property name="password" value="tkfkd1507"/>
     </bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -21,15 +21,6 @@
      
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSession"/>
-    </bean> 
-	<!-- 
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-	  <constructor-arg index="0" ref="sqlSessionFactory" />
-	</bean> -->
-	
-	<!-- mapper -->
-	<!-- <bean id="binooMapper" class="core.project.cloud.common.dao.BinooCommonDAO">
-	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean> -->
+    </bean>
 	
 </beans>
