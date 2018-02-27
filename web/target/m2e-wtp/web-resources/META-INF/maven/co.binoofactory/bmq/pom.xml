@@ -14,7 +14,6 @@
 		<org.slf4j-version>1.7.4</org.slf4j-version>
 	</properties>
 	<dependencies>
-	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -188,8 +187,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
