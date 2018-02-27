@@ -20,7 +20,25 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class CommonMailService {
-	
+
+	/**
+	 * @Method Name : sendMailTo
+	 * @Description : It is method that using extra SMTP server to send mail.
+	 * @author botbinoo@naver.com
+	 * @since 2018.02.28
+	 * @last 2018.02.28
+	 * @param
+	 *  - int			smtp version
+	 *  - String		extra smtp server id
+	 *  - String 		extra smtp server password
+	 *  - String		to user id
+	 *  - String		title in mail
+	 *  - String		contents in mail
+	 * @return 
+	 *  - Whether the mail was sent successfully.
+	 *  Copyright (C) by botbinoo's All right reserved.
+	 * @throws Exception 
+	 */
 	public boolean sendMailTo ( 
 			final int smtpv, 						/* SMTP type */
 			final String meId, 						/* Transmission user id */
