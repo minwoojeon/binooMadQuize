@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- /**
+ * @XML Name : UserSQL
+ * @Description : User SQL
+ * @author botbinoo@naver.com
+ * @since 2018.02.28
+ * @version 1
+ * Copyright (C) by botbinoo's All right reserved.
+ */ -->
+<mapper namespace="UserMapper">
+	<select id="selectItem" parameterType="co.binoofactory.bmq.botbinoo.vo.UserVO" resultType="co.binoofactory.bmq.botbinoo.vo.UserVO">
+		select 
+			seq, 
+			userid, 
+			usernick, 
+			userpw, 
+			userseckey, 
+			usercode, 
+			pwincorrectcnt, 
+			areacode, 
+			age, 
+			gender, 
+			favoritcode, 
+			DATE_FORMAT(regtime, '%Y-%m-%d') AS regtime
+		from 
+			TB_USERS
+		where 
+			seq=#{seq}
+	</select>
+	<select id="selectItemList" parameterType="co.binoofactory.bmq.botbinoo.vo.UserVO" resultType="co.binoofactory.bmq.botbinoo.vo.UserVO">
+		select 
+			seq, 
+			userid, 
+			usernick, 
+			userpw, 
+			userseckey, 
+			usercode, 
+			pwincorrectcnt, 
+			areacode, 
+			age, 
+			gender, 
+			favoritcode, 
+			DATE_FORMAT(regtime, '%Y-%m-%d') AS regtime
+		from
+			(
+				select 
+					seq, 
+					userid, 
+					usernick, 
+					userpw, 
+					userseckey, 
+					usercode, 
+					pwincorrectcnt, 
+					areacode, 
+					age, 
+					gender, 
+					favoritcode, 
+					DATE_FORMAT(regtime, '%Y-%m-%d') AS regtime
+				from 
+					TB_USERS
+					<where>
+						<if test="userid != null and userid != ''">
+							and userid = #{userid}
+						 </if>
+						 <if test="userseckey != null and userseckey != ''">
+							and userseckey = #{userseckey}
+						 </if>
+						 <if test="areacode != null and areacode != ''">
+							and areacode = #{areacode}
+						 </if>
+						 <if test="age != null and age != ''">
+							and age = #{age}
+						 </if>
+						 <if test="gender != null and gender != ''">
+							and gender = #{gender}
+						 </if>
+					</where>
+				<!-- limit  (#{currentPage} - 1) * #{oncePagesView}, #{oncePagesView} -->
+			) TB_USERS
+			order by seq desc
+	</select>
+	
+	<select id="selectItemListTotCnt" parameterType="co.binoofactory.bmq.botbinoo.vo.UserVO" resultType="int">
+		select count(*) totcnt
+		from TB_USERS
+	</select>
+	
+	<insert id="insertItem" parameterType="co.binoofactory.bmq.botbinoo.vo.UserVO">
+		insert into TB_USERS
+		(
+			userid, 
+			usernick, 
+			userpw, 
+			userseckey, 
+			usercode, 
+			pwincorrectcnt, 
+			areacode, 
+			age, 
+			gender, 
+			favoritcode
+		)
+		 values(
+			#{userid}, 
+			#{usernick}, 
+			#{userpw}, 
+			#{userseckey}, 
+			#{usercode}, 
+			#{pwincorrectcnt}, 
+			#{areacode}, 
+			#{age}, 
+			#{gender}, 
+			#{favoritcode}
+		 )
+	</insert>
+	<update id="updateItem" parameterType="co.binoofactory.bmq.botbinoo.vo.UserVO">
+		update TB_USERS set
+			<if test="userid != null and userid != ''">
+				userid = #{userid},
+			</if>
+			<if test="usernick != null and usernick != ''">
+				usernick = #{usernick},
+			</if>
+			<if test="userpw != null and userpw != ''">
+				userpw = #{userpw},
+			</if>
+			<if test="userseckey != null and userseckey != ''">
+				userseckey = #{userseckey},
+			</if>
+			<if test="usercode != null and usercode != ''">
+				usercode = #{usercode},
+			</if>
+			<if test="areacode != null and areacode != ''">
+				areacode = #{areacode},
+			</if>
+			<if test="age != null and age != ''">
+				age = #{age},
+			</if>
+			<if test="gender != null and gender != ''">
+				gender = #{gender},
+			</if>
+			<if test="favoritcode != null and favoritcode != ''">
+				favoritcode = #{favoritcode},
+			</if>
+			pwincorrectcnt = #{pwincorrectcnt}
+		where 
+			userid=#{userid}
+	</update>
+	<delete id="deleteItem" parameterType="int">
+		delete from TB_USERS where userid=#{userid}
+	</delete>
+</mapper>
