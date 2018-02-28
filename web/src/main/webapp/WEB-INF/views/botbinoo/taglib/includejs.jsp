@@ -14,11 +14,11 @@
  --%>
  
  <!-- commons js. botbinoo 2018.02.21. -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script type="text/javascript" src="<c:url value='/resources/js/jquery.min.js'/>"></script>
  <script type="text/javascript" src="<c:url value='/resources/js/skel.min.js'/>"></script>
  <script type="text/javascript" src="<c:url value='/resources/js/main.js'/>"></script>
  <script type="text/javascript" src="<c:url value='/resources/js/util.js'/>"></script>
+ <script type="text/javascript" src="<c:url value='/resources/js/binooSNSpack.js'/>"></script>
  <!--[if lte IE 8]><script type="text/javascript" src="<c:url value='/resources/js/ie/html5shiv.js'/>"></script><![endif]-->
  <!--[if lte IE 8]><script type="text/javascript" src="<c:url value='/resources/js/ie/respond.min.js'/>"></script><![endif]-->
  

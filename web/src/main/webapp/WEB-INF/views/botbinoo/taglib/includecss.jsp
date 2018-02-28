@@ -24,7 +24,7 @@
 		url('<c:url value="/resources/fonts/fontawesome-webfont.woff2?v=4.6.3"/>') format('woff2'),
 		url('<c:url value="/resources/fonts/fontawesome-webfont.woff?v=4.6.3"/>') format('woff'),
 		url('<c:url value="/resources/fonts/fontawesome-webfont.ttf?v=4.6.3"/>') format('truetype'),
-		url('<c:url value="/resources/fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular"/>')
+		url('<c:url value="/resources/fonts/fontawesome-webfont.svg?v=5.0.0#fontawesomeregular"/>')
 		format('svg');
 	font-weight: normal;
 	font-style: normal
@@ -32,6 +32,7 @@
 -->
 </style>
  <link rel="stylesheet" href="<c:url value='/resources/css/font-awesome.min.css'/>">
+ <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
  <!--[if lte IE 9]> <link rel="stylesheet" href="<c:url value='/resources/css/ie9.css'/>"><![endif]-->
  <!--[if lte IE 8]> <link rel="stylesheet" href="<c:url value='/resources/css/ie8.css'/>"><![endif]-->
  <link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>">
