@@ -40,13 +40,12 @@
 		</ul>
 		<p></p>
 
-		<input alt="회원가입할래요 (I want to sign-up.)" type="checkbox" id="chk1"
-			name="" onclick="javascript:$('#sign-up').toggle();return false;">
-		<label for="chk1">회원가입할래요 (I want to sign-up.)</label>
+		<a href="javascript:$('#sign-up').toggle();" class="button fit">
+		회원가입할래요 (I want to sign-up.)</a>
 
 		<!-- 회원가입할래요를 누르면 활성화(닫으면 비활성화) -->
-		<section id="sign-up" style="display: block;">
-			<form>
+		<section id="sign-up" style="display: none;">
+			<form:form commandName="userVO" name="frm" id="frm" method="post">
 				<div class="row uniform">
 					<!-- 약관 (접었다폈다 가능/ 필수) -->
 					<div class="12u$">
@@ -155,7 +154,7 @@
 					<!-- 이메일 아이디 (중복확인/ 필수) -->
 					<div class="12u$ row uniform">
 						<div class="6u 12u$(xsmall)">
-							<input type="text" name="demo-name" id="demo-name" value=""
+							<input type="text" name="userid" id="userid" value=""
 								placeholder="Email@email.net">
 						</div>
 						<div class="6u 12u$(xsmall)">확인 이미지(입력에서 손이 떨어질때 확인)</div>
@@ -163,25 +162,23 @@
 
 					<div class="12u$ row uniform">
 						<div class="6u 12u$(xsmall)">
-							<input type="text" name="" id="" value="" placeholder="Name">
+							<input type="text" name="usernick" id="usernick" value="" placeholder="Nick-name">
 						</div>
 						<div class="6u 12u$(xsmall)">닉네임(필수)</div>
 					</div>
 
 					<div class="12u$ row uniform">
 						<div class="6u 12u$(xsmall)">
-							<input type="text" name="" id="" value="" placeholder="password">
+							<input type="text" name="userpw" id="userpw" value="" placeholder="password">
 						</div>
 						<div class="6u 12u$(xsmall)">확인 이미지(입력에서 손이 떨어질때 확인)</div>
 					</div>
 
 
-
-
 					<!-- 비밀번호 (필수) -->
 					<div class="12u$ row uniform">
 						<div class="6u 12u$(xsmall)">
-							<input type="text" name="" id="" value=""
+							<input type="text" name="userseckey" id="userseckey" value=""
 								placeholder="password config">
 						</div>
 						<div class="6u 12u$(xsmall)">확인 이미지(입력에서 손이 떨어질때 확인)</div>
@@ -192,12 +189,12 @@
 					<div class="12u$ row uniform">
 						<div class="6u 12u$(xsmall)">
 							<div class="select-wrapper">
-								<select name="demo-category" id="demo-category">
+								<select name="areacode" id="areacode">
 									<option value="">- 지역 -</option>
-									<option value="1">Manufacturing</option>
-									<option value="1">Shipping</option>
-									<option value="1">Administration</option>
-									<option value="1">Human Resources</option>
+									<option value="1">Korean</option>
+									<option value="2">USA</option>
+									<option value="3">Chines</option>
+									<option value="4">Japan</option>
 								</select>
 							</div>
 						</div>
@@ -206,11 +203,11 @@
 					</div>
 					<div class="12u$ row uniform">
 						<div class="6u 12u$(xsmall)">
-							<input type="text" name="" id="" value=""
+							<input type="text" name="age" id="age" value=""
 								placeholder="(선택) 나이(years old)">
 						</div>
 						<div class="6u 12u$(xsmall)">
-							<input type="text" name="" id="" value=""
+							<input type="text" name="reason" id="reason" value=""
 								placeholder="(선택) 가입하게된 간단한 이유(reason)">
 						</div>
 					</div>
@@ -261,15 +258,36 @@
 					</div>
 
 					<div class="12u$">
-						<a href="#" class="button special fit">가입하기</a>
+						<a href="javascript:validation.chk();" class="button special fit">가입하기</a>
 					</div>
 				</div>
-			</form>
+			</form:form>
 		</section>
 	</div>
 </div>
 
 <script>
-var gap = $('.image.main').width()-120;
-$('.image.main>img').attr({"style":"margin-left:"+(gap/2)+"px; width:120px;"});
+// validation 체크
+var validation = {
+		chk:function(){
+			// 입력값체크
+			validation.join();
+		}, join:function(){
+			$.ajax({
+	            url:'/bmq/user/confirm/sign-up/{key}',
+	            type:'post',
+	            data:$('frm').serialize(),
+	            success:function(data){
+	            	if(data[0]=="s"){
+	            		alert("회원가입에 성공하였습니다.");
+	            		document.location.replace("/bmq");
+	            	} else {
+	            		alert("정보를 다시한번 확인해주세요.");
+	            	}
+	            },
+	            error:function(e){
+	            }
+	        });
+		}
+};
 </script>

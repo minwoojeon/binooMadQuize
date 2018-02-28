@@ -34,6 +34,7 @@ public class HomeController {
 		try {
 			List<MenuVO> resultList = menuService.selectMenuList(new MenuVO());
 			model.addAttribute("menuList", resultList );
+			model.addAttribute("pageName", "botbinoo/framelib/main");
 			return "botbinoo/framelib/template";
 		} catch (Exception e) {
 			e.printStackTrace();

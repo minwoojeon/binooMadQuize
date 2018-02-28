@@ -35,7 +35,7 @@
 		<%@include file="../framelib/menu.jsp"%>
 
 		<!-- Main -->
-		<%@include file="../framelib/main.jsp"%>
+		<jsp:include page="/WEB-INF/views/${pageName}.jsp" />
 
 		<!-- Footer -->
 		<%@include file="../framelib/footer.jsp"%>

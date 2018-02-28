@@ -1,11 +1,13 @@
 ﻿package co.binoofactory.bmq.botbinoo.ctr;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import co.binoofactory.bmq.botbinoo.svc.MenuService;
 import co.binoofactory.bmq.botbinoo.svc.UserService;
+import co.binoofactory.bmq.botbinoo.vo.MenuVO;
 import co.binoofactory.bmq.botbinoo.vo.UserVO;
 import net.sf.json.JSONArray;
 
@@ -33,6 +37,9 @@ public class UserController {
 	@Autowired(required=false)
 	private UserService userService;
 	
+	@Autowired(required=false)
+	private MenuService menuService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	/**
@@ -48,7 +55,7 @@ public class UserController {
 	 *  Copyright (C) by botbinoo's All right reserved.
 	 * @throws Exception 
 	 */
-	@RequestMapping(value = "/user/confirm/{value}/{key}", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/confirm/{value}/{key}")
 	public @ResponseBody JSONArray getUserItemProcess ( 
 			@PathVariable("value") String value,
 			@PathVariable("key") String key,
@@ -253,5 +260,36 @@ public class UserController {
 		}
 
 		return result;
+	}
+	
+
+	/**
+	 * @Method Name : userPage
+	 * @Description : view user page (회원 정보 수정/삭제/추가 등 거의 모든 화면)
+	 * @author botbinoo@naver.com
+	 * @since 2018.03.1
+	 * @last 2018.03.1
+	 * @param
+	 *  - url path {proc-value} & {secure-key}.
+	 * @return 
+	 *  - sql result (json).
+	 *  Copyright (C) by botbinoo's All right reserved.
+	 * @throws Exception 
+	 */
+	@RequestMapping(value = "/user/page/{value}/{key}", method = RequestMethod.GET)
+	public String userPage(
+			Locale locale, Model model,
+			@PathVariable("value") String value,
+			@PathVariable("key") String key
+		) {
+		try {
+			List<MenuVO> resultList = menuService.selectMenuList(new MenuVO());
+			model.addAttribute("menuList", resultList );
+			model.addAttribute("pageName", "botbinoo/page/myinfo/"+value);
+			return "botbinoo/framelib/template";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "botbinoo/page/error/error";
+		}
 	}
 }
