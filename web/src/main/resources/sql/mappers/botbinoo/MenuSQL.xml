@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-
+<!-- /**
+ * @XML Name : MenuSQL
+ * @Description : Menu SQL
+ * @author botbinoo@naver.com
+ * @since 2018.02.28
+ * @version 1
+ * Copyright (C) by botbinoo's All right reserved.
+ */ -->
 <mapper namespace="MenuMapper">
 	<select id="selectItem" parameterType="co.binoofactory.bmq.botbinoo.vo.MenuVO" resultType="co.binoofactory.bmq.botbinoo.vo.MenuVO">
 		select seq, menuCode, menuTitle, menuURL

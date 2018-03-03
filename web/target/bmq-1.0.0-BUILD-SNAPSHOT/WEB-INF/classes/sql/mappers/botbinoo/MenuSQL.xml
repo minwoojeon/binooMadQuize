@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="MenuMapper">
+	<select id="selectItem" parameterType="co.binoofactory.bmq.botbinoo.vo.MenuVO" resultType="co.binoofactory.bmq.botbinoo.vo.MenuVO">
+		select seq, menuCode, menuTitle, menuURL
+		 from TB_MENU
+		 where seq=#{seq}
+	</select>
+	<select id="selectItemList" parameterType="co.binoofactory.bmq.botbinoo.vo.MenuVO" resultType="co.binoofactory.bmq.botbinoo.vo.MenuVO">
+		select seq, menuCode, menuTitle, menuURL
+		 from
+			(
+				select seq, menuCode, menuTitle, menuURL
+				from TB_MENU
+				<where>
+					<if test="seq != null and seq != ''">
+						and seq = #{seq}
+					 </if>
+					 <if test="menuTitle != null and menuTitle != ''">
+						and menuTitle = #{menuTitle}
+					 </if>
+					 <if test="menuCode != null and menuCode != ''">
+						and menuCode = #{menuCode}
+					 </if>
+				</where>
+				<!-- limit  (#{currentPage} - 1) * #{oncePagesView}, #{oncePagesView} -->
+			) TB_MENU
+			order by seq desc
+	</select>
+	
+	<select id="selectItemListTotCnt" parameterType="co.binoofactory.bmq.botbinoo.vo.MenuVO" resultType="int">
+		select count(*) totcnt
+		 from TB_MENU
+		 <where>
+			 <if test="searchKeyword != null and searchKeyword != ''">
+				and menuTitle like #{searchKeyword}
+			 </if>
+		 </where>
+	</select>
+	
+	<insert id="insertItem" parameterType="co.binoofactory.bmq.botbinoo.vo.MenuVO">
+		insert into TB_MENU(menuCode, menuTitle, menuURL)
+		 values(#{menuCode}, #{menuTitle}, #{menuURL})
+	</insert>
+	<update id="updateItem" parameterType="co.binoofactory.bmq.botbinoo.vo.MenuVO">
+		update TB_MENU set
+			menuCode=#{menuCode},
+ 		   	menuTitle=#{menuTitle},
+  		  	menuURL=#{menuURL}
+		where seq=#{seq}
+	</update>
+	<delete id="deleteItem" parameterType="int">
+		delete from TB_MENU where seq=#{seq}
+	</delete>
+</mapper>
+

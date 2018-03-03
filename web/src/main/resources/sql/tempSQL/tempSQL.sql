@@ -1,4 +1,4 @@
--- since 2018.02.26
+﻿-- since 2018.02.26
 -- last 2018.02.26
 
 CREATE DATABASE IF NOT EXISTS web_project;
@@ -9,21 +9,43 @@ USE web_project;
 -- seq, menuCode, menuTitle, menuURL
 drop table IF EXISTS TB_MENU;
 create table if not exists TB_MENU(
-   seq int(10) auto_increment not null,      -- 메뉴 고유키
-   menuCode int(10) default 0,               -- 메뉴 코드 (국문 0x0~0x100 / 영문 0x101~0x200)
-   menuTitle varchar(50) not null,            -- 메뉴 명
-   menuURL varchar(500),                  -- 메뉴 링크
-   regtime datetime default now(),            -- 생성시간
-   primary key(seq)
+	seq int(10) auto_increment not null,		-- 메뉴 고유키
+	menuCode int(10) default 0,					-- 메뉴 코드 (국문 0x0~0x100 / 영문 0x101~0x200)
+	menuTitle varchar(50) not null,				-- 메뉴 명
+	menuURL varchar(500),						-- 메뉴 링크
+	regtime datetime default now(),				-- 생성시간
+	primary key(seq)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- 사용자 테이블 : jungwon
 -- 사용자 로그인을 위해 개발.
 drop table IF EXISTS TB_USERS;
+create table if not exists TB_USERS(
+	seq int(10) auto_increment not null,		-- 유저 고유키
+	userid varchar(100) unique not null,		-- 유저 아이디
+	usernick varchar(100) not null,				-- 유저 닉네임
+	userpw varchar(250) not null,				-- 유저 비밀번호
+	userseckey varchar(250) not null,			-- 유저 시크릿키
+    usercode int(1) default 0,					-- 0 일반유저 5 로그인유저 9 관리자
+    pwincorrectcnt int(2) default 0,			-- 비밀번호 틀린횟수
+	areacode int(5),							-- 지역코드
+	age int(3),									-- 나이
+	gender int(1),								-- 성별
+	favoritcode int(10),						-- 좋아하는 카테고리
+	regtime datetime default now(),				-- 가입시간
+	primary key(seq)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- 사용자 접근정보(로그인/비로그인 모두) 테이블 : botbinoo
 -- 사용자 디비접근정보/해킹공격에 대한 내역을 남기고, 암호화 키/시리얼 넘버를 통해 실시간 암호 재조합(구상중)
 drop table IF EXISTS TB_USERS_ACCESS;
+create table if not exists TB_USERS_ACCESS(
+	regtime datetime default now(),				-- 로그 생성시간
+	usercode int(1),							-- 0 일반유저 10 로그인유저 20 관리자
+	userid varchar(100),						-- 유저 아이디 (0 : mac address)
+	accesscode int(2),							-- login(0~10), 
+	ipaddress varchar(12),						-- 접근ip
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 문제 게시판 테이블 : byungjun
 -- 사용자가 누구나 문제를 출제할 수 있도록 문제 제시(인서트), 출제(검색), 수정, 삭제 등을 제공한다.

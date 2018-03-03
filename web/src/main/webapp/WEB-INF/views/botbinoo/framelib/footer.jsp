@@ -35,12 +35,12 @@
 		<section>
 			<h2>Follow</h2>
 			<ul class="icons">
-				<li><a href="#" class="icon style2 fa-twitter"><span
+				<li><a href="javascript:snspack.tweeter();" class="icon style2 fa-twitter"><span
 						class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon style2 fa-facebook"><span
+				<li><a href="javascript:snspack.facebook();" class="icon style2 fa-facebook"><span
 						class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon style2 fa-envelope-o"><span
-						class="label">Email</span></a></li>
+				<li><a href="javascript:snspack.line();" class="icon style2 fa-line"><span
+						class="label">Line</span></a></li>
 			</ul>
 		</section>
 		<ul class="copyright">

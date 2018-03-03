@@ -22,6 +22,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 	<%@include file="../taglib/includecss.jsp"%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -35,7 +36,7 @@
 		<%@include file="../framelib/menu.jsp"%>
 
 		<!-- Main -->
-		<%@include file="../framelib/main.jsp"%>
+		<jsp:include page="/WEB-INF/views/${pageName}.jsp" />
 
 		<!-- Footer -->
 		<%@include file="../framelib/footer.jsp"%>

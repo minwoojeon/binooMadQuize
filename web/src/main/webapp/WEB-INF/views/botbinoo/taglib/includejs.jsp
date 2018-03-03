@@ -18,6 +18,7 @@
  <script type="text/javascript" src="<c:url value='/resources/js/skel.min.js'/>"></script>
  <script type="text/javascript" src="<c:url value='/resources/js/main.js'/>"></script>
  <script type="text/javascript" src="<c:url value='/resources/js/util.js'/>"></script>
+ <script type="text/javascript" src="<c:url value='/resources/js/binooSNSpack.js'/>"></script>
  <!--[if lte IE 8]><script type="text/javascript" src="<c:url value='/resources/js/ie/html5shiv.js'/>"></script><![endif]-->
  <!--[if lte IE 8]><script type="text/javascript" src="<c:url value='/resources/js/ie/respond.min.js'/>"></script><![endif]-->
  

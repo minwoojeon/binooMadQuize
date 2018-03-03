@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-  	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
-        
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/web_project?serverTimezone=UTC" />
-        <property name="username" value="root"/> 
-        <property name="password" value="Akdxh213"/>
-    </bean>
-	
+
+	<!-- 데이터베이스 연결 오라클 : 둘중 하나만 쓸것 -->
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" /> //@도메인:포트번호:오라클명칭(xe)
+		<property name="username" value="scott" /> //scott 같은 아이디
+		<property name="password" value="tiger" /> //tiger 같은 비번
+	</bean> -->
+	<!-- 데이터베이스 연결 mySQL : 둘중 하나만 쓸것 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3308/web_project?serverTimezone=UTC" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
+
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations" value="classpath:/sql/mappers/**/*SQL.xml" />
-    </bean>
-     
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg index="0" ref="sqlSession"/>
-    </bean> 
-	<!-- 
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-	  <constructor-arg index="0" ref="sqlSessionFactory" />
-	</bean> -->
-	
-	<!-- mapper -->
-	<!-- <bean id="binooMapper" class="core.project.cloud.common.dao.BinooCommonDAO">
-	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean> -->
-	
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:/sql/mappers/**/*SQL.xml" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSession" />
+	</bean>
+
 </beans>
