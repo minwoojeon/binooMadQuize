@@ -47,6 +47,21 @@ create table if not exists TB_USERS_ACCESS(
 	ipaddress varchar(12),						-- 접근ip
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- 자유 게시판 테이블 : botbinoo
+-- 사용자가 누구나 자유로운 이야기를 나눌수 있는 게시판을 제공한다.
+drop table IF EXISTS TB_FREE_BBS;
+create table if not exists TB_FREE_BBS(
+	seq int(10) auto_increment not null,		-- 게시판 고유번호
+	userid varchar(100),		                -- 작성자 유저 아이디 (null일 수 있음)
+	title varchar(100) not null,				-- 제목
+	contents text not null,						-- 내용
+	boardkey varchar(250),						-- 작성 비번 (비회원 작성 보호)
+    boardtype int(1) default 0,					-- 0 비회원 1 회원 2 보호 3 공지 4 관리자
+    category int(2) default 0,					-- 카테고리
+	regtime datetime default now(),				-- 가입시간
+	primary key(seq)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- 문제 게시판 테이블 : byungjun
 -- 사용자가 누구나 문제를 출제할 수 있도록 문제 제시(인서트), 출제(검색), 수정, 삭제 등을 제공한다.
 drop table IF EXISTS TB_QUEST_BBS;
