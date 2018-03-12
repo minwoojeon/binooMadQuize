@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
-
+//암호화 모듈
 const Check = require('../config/dbManager.js');
-
+//DB 제어가 필요시 필요한 메니저js 불러옴
 module.exports = function(app) {
 app.get('/', (req, res) => {
     const sess = req.session; // 세션 객체에 접근
@@ -38,6 +38,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login'); // login.ejs 랜더링
 });
+//로그인 이나 회원가입시 특정값에 대한 대책 마련해야함 
 app.post('/login', (req, res) => {
     const body = req.body; // body-parser 사용
 
