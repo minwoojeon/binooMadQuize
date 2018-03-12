@@ -13,16 +13,17 @@ const port     = process.env.PORT || 3000;
 //DB settings
 //require('./config/dbManager');
 // DB setting
-mongoose.connect(process.env.MONGO_DB, { useMongoClient: true }); // 1
-var db = mongoose.connection; // 2
-// 3﻿
-db.once("open", function(){
- console.log("DB connected");
-});
-// 4
-db.on("error", function(err){
- console.log("DB ERROR : ", err);
-});
+// mongoose.connect(process.env.MONGO_DB, { useMongoClient: true }); // 1
+// var db = mongoose.connection; // 2
+// // 3﻿
+// db.once("open", function(){
+//  console.log("DB connected");
+// });
+// // 4
+// db.on("error", function(err){
+//  console.log("DB ERROR : ", err);
+// });
+//Mysql Validator 를 사용해봐야 할것
 
 //Other settings
 
