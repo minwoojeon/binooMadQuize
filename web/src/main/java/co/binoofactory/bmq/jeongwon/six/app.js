@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const morgan = require('morgan');
-const port     = process.env.PORT || 3000;
+const port     = process.env.PORT || 80;
 
 //config 정의
 
@@ -28,6 +28,8 @@ app.use(session({
 
 //라우터
 require('./routers/route.js')(app);
+
+
 //시작
 app.listen(port);
 console.log('using port : ' + port);
