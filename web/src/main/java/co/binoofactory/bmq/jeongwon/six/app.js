@@ -4,15 +4,17 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const methodOverride = require("method-override");
+// const methodOverride = require("method-override");
 const mongoose = require('mongoose');
 
 const morgan = require('morgan');
 const port     = process.env.PORT || 3000;
 
-//DB settings
-//require('./config/dbManager');
-// DB setting
+// DB setting - Mysql 사용
+require('./config/dbManager');
+
+
+// DB setting - MongoDB 사용
 // mongoose.connect(process.env.MONGO_DB, { useMongoClient: true }); // 1
 // var db = mongoose.connection; // 2
 // // 3﻿
@@ -33,7 +35,7 @@ app.use(express.static(__dirname+"/public"));
 app.use(morgan('dev')) // 모든 요청 로그 콘솔에 정의
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
 
 app.use(session({
     secret: 'ambc@!vsmkv#!&*!#EDNAnsv#!$()_*#@',

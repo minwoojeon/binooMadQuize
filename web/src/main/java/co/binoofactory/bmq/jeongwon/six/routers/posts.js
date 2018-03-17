@@ -1,17 +1,22 @@
 const express = require("express");
+// const app = express();
 const router = express.Router();
-const Post  = require("../models/Post");
+const { check, validationResult } = require('express-validator/check'); // 유효성 검사
+
+
+//router.use(expressVaildator());
+//const Post  = require("../models/Post");
 
 // Index
 router.get("/", function(req, res){
- Post.find({})                  // 1
- .sort("-createdAt")            // 1
- .exec(function(err, posts){    // 1
-  if(err) return res.json(err);
-  res.render("posts/index", {posts:posts});
+ // Post.find({})                  // 1
+ // .sort("-createdAt")            // 1
+ // .exec(function(err, posts){    // 1
+ //  if(err) return res.json(err);
+  // res.render("posts/index", {posts:posts});
 
-  // res.render("posts/index");
-  });
+  res.render("posts/index");
+  // });
 });
 
 // New
@@ -20,10 +25,43 @@ router.get("/new", function(req, res){
 });
 
 // create
-router.post("/", function(req, res){
+router.post("/",[
+  check('title')
+  .isEmail().withMessage('is not match')
+  .trim()
+  .normalizeEmail()
+
+
+
+], (req, res, next) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){
+    return res.status(422).json({errors : errors.mapped()});
+  }
+
+  return res.redirect("/posts");
+  //var check = req.body;
+  //var title = check.title;
+
+  // var error = expressVaildator('title').isEmail();
+  //title.checkQuery('title','Invaild emil type').isEmail();
+  //var error = req.validationErrors();
+
+  // var check = req.body;
+
+
+
+  // console.log(error);
+  //console.log(check);
+
+  // if(error){
+  //   res.status(401).send("Title Check Error");
+  // }else {
+  //   res.status(200).send("Title Check OK");
+  // }
  // Post.create(req.body, function(err, post){
  //  if(err) return res.json(err);
- //  res.redirect("/posts");
+  //res.redirect("/posts");
  // });
 });
 
