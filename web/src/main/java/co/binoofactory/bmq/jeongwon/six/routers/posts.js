@@ -16,6 +16,10 @@ router.get("/", function(req, res){
   // res.render("posts/index", {posts:posts});
 
   res.render("posts/index");
+  // var str = "baba";
+  // var re = new RegExp("0-4");
+
+  // console.log(re.test(re));
   // });
 });
 

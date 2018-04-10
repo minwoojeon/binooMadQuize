@@ -7,6 +7,9 @@ const session = require('express-session');
 // const methodOverride = require("method-override");
 const mongoose = require('mongoose');
 
+
+const flash = require('connect-flash');
+
 const morgan = require('morgan');
 const port     = process.env.PORT || 3000;
 
@@ -42,6 +45,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+app.use(flash());
 
 
 //라우터
